@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.2T">
+	<bounds minlat="0.807" minlon="103.062" maxlat="1.823" maxlon="104.545"/>
+    <node id="1558637821" lat="1.3305096" lon="103.9532473" version="2" timestamp="2012-07-27T09:06:22Z" changeset="12508529" uid="741163" user="JaLooNz">
+        <tag k="name" v="MRT East West Line (EW)"/>
+    </node>
+    <node id="1889319397" lat="1.4469488" lon="103.7857512" version="1" timestamp="2012-08-30T03:58:56Z" changeset="12912977" uid="741163" user="JaLooNz">
+        <tag k="construction" v="station"/>
+        <tag k="name" v="Woodlands North"/>
+        <tag k="railway" v="construction"/>
+        <tag k="ref" v="TS1"/>
+        <tag k="state" v="proposed"/>
+    </node>
+    <node id="1889319692" lat="1.4436946" lon="103.7880596" version="1" timestamp="2012-08-30T03:59:05Z" changeset="12912977" uid="741163" user="JaLooNz"/>
+    <node id="1889319691" lat="1.4428549" lon="103.7886344" version="1" timestamp="2012-08-30T03:59:05Z" changeset="12912977" uid="741163" user="JaLooNz"/>
+    <node id="1889319690" lat="1.4422971" lon="103.7889661" version="1" timestamp="2012-08-30T03:59:05Z" changeset="12912977" uid="741163" user="JaLooNz"/>
+    <node id="1840701015" lat="1.3358121" lon="103.9622502" version="2" timestamp="2012-08-09T09:02:03Z" changeset="12665844" uid="473466" user="zomgvivian"/>
+    <node id="1840701285" lat="1.3369151" lon="103.9606557" version="2" timestamp="2012-08-09T09:01:57Z" changeset="12665844" uid="473466" user="zomgvivian"/>
+    <node id="1840701403" lat="1.3374706" lon="103.9604927" version="2" timestamp="2012-08-09T09:01:59Z" changeset="12665844" uid="473466" user="zomgvivian"/>
+    <node id="1840701531" lat="1.338389" lon="103.9606557" version="2" timestamp="2012-08-09T09:02:03Z" changeset="12665844" uid="473466" user="zomgvivian"/>
+    <node id="1840700822" lat="1.3411974" lon="103.9615302" version="8" timestamp="2012-08-09T09:01:56Z" changeset="12665844" uid="473466" user="zomgvivian"/>
+
+    <way id="178063325" version="10" timestamp="2013-12-13T09:48:24Z" changeset="19425811" uid="741163" user="JaLooNz">
+        <nd ref="1840701015"/>
+        <nd ref="1840701285"/>
+        <nd ref="1840701403"/>
+        <nd ref="1840701531"/>
+        <nd ref="1840700822"/>
+        <tag k="color" v="#0354A6"/>
+        <tag k="colour" v="#0354A6"/>
+        <tag k="construction" v="subway"/>
+        <tag k="designation" v="Downtown Line"/>
+        <tag k="layer" v="-2"/>
+        <tag k="name" v="Downtown Line MRT"/>
+        <tag k="railway" v="construction"/>
+        <tag k="ref" v="DTL"/>
+        <tag k="tunnel" v="yes"/>
+        <tag k="wheelchair" v="yes"/>
+    </way>
+
+    <way id="178591205" version="4" timestamp="2013-05-04T08:06:56Z" changeset="15968162" uid="622060" user="Cort Wee">
+        <nd ref="1889319397"/>
+        <nd ref="1889319692"/>
+        <nd ref="1889319691"/>
+        <nd ref="1889319690"/>
+        <tag k="electrified" v="yes"/>
+        <tag k="fixme" v="Alignment"/>
+        <tag k="name" v="Thomson Line (TSL)"/>
+        <tag k="proposed" v="subway"/>
+        <tag k="railway" v="proposed"/>
+        <tag k="ref" v="TSL"/>
+        <tag k="tunnel" v="yes"/>
+    </way>
+	<relation id="2313458" version="12" timestamp="2013-12-13T09:42:30Z" changeset="19425811" uid="741163" user="JaLooNz">
+		<member type="way" ref="178063325" role=""/>
+		<tag k="colour" v="blue"/>
+		<tag k="from" v="Bukit Panjang"/>
+		<tag k="name" v="MRT Downtown Line (DTL)"/>
+		<tag k="network" v="Singapore Rail"/>
+		<tag k="operator" v="SBS Transit"/>
+		<tag k="ref" v="Downtown Line"/>
+		<tag k="route" v="subway"/>
+		<tag k="to" v="Expo"/>
+		<tag k="type" v="route"/>
+		<tag k="wheelchair" v="yes"/>
+	</relation>
+	<relation id="2383439" version="2" timestamp="2013-08-18T04:44:25Z" changeset="17391195" uid="741163" user="JaLooNz">
+		<member type="way" ref="178591205" role=""/>
+		<member type="node" ref="1889319397" role="stop"/>
+		<tag k="color" v="#734538"/>
+		<tag k="colour" v="#734538"/>
+		<tag k="from" v="Woodlands North"/>
+		<tag k="name" v="MRT Thomson Line (TSL)"/>
+		<tag k="network" v="Singapore Rail"/>
+		<tag k="operator" v="NA"/>
+		<tag k="ref" v="Thomson Line"/>
+		<tag k="route" v="subway"/>
+		<tag k="to" v="Gardens by the Bay"/>
+		<tag k="type" v="route"/>
+		<tag k="wheelchair" v="yes"/>
+	</relation>
+    <relation id="9313458" version="12" timestamp="2013-12-13T09:42:30Z" changeset="19425811" uid="741163" user="JaLooNz">
+        <member type="relation" ref="2313458" role="route"/>
+        <member type="relation" ref="2383439" role="route"/>
+    </relation>
+</osm>

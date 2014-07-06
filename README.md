@@ -1,4 +1,5 @@
 node-osm-stream
 ===============
 
-NodeJS-based OpenStreetMap file (.osm) stream parser
+A NodeJS-based streamable parser for OpenStreetMap (.osm) files
+

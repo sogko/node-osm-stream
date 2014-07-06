@@ -1,0 +1,32 @@
+{
+  "name": "node-osm-stream",
+  "version": "0.1.0",
+  "description": "A NodeJS-based streamable parser for OpenStreetMap (.osm) files",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sogko/node-osm-stream"
+  },
+  "keywords": [
+    "openstreetmap",
+    "osm",
+    "stream",
+    "streamable",
+    "parser"
+  ],
+  "author": {
+    "name": "Hafiz Ismail",
+    "email": "hafiz@wehavefaces.net",
+    "url": "http://wehavefaces.net"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "node-expat": "^2.3.0"
+  },
+  "devDependencies": {
+    "JSONStream": "^0.8.4"
+  }
+}
