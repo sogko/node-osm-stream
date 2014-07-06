@@ -63,10 +63,10 @@ Easy-peasy, lemon-squeezy.
 
 
 ### More examples
-More advanced examples are available in the ./examples folder
+More advanced examples are available in the ````./examples``` folder
 
 #### Writing to a JSON file using Writeable steam (fs.createWriteStream)
-Source: [examples/write-to-json.js](https://github.com/sogko/node-osm-stream/raw/master/examples/write-to-json.js)
+Source: [/examples/write-to-json.js](https://github.com/sogko/node-osm-stream/raw/master/examples/write-to-json.js)
 
 To run example:
 ````
@@ -90,7 +90,7 @@ Or you can prevent the data from being passed downstream by passing back a *null
 
 Its important to note that since this is a streaming parser, any other objects (ways/relations) that may have referenced a skipped node may still hold its reference. It is up to the implementation to remove its references. 
 
-To see an example of a possible implementation, take a look at ```` examples/write-to-json.js````
+To see an example of a possible implementation, take a look at ```` /examples/write-to-json.js````
 
 Note: If this event was registered, the callback must be passed back.
 
