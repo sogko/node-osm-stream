@@ -63,7 +63,7 @@ Easy-peasy, lemon-squeezy.
 
 
 ### More examples
-More advanced examples are available in the ````./examples``` folder
+More advanced examples are available in the ```./examples``` folder
 
 #### Writing to a JSON file using Writeable steam (fs.createWriteStream)
 Source: [/examples/write-to-json.js](https://github.com/sogko/node-osm-stream/raw/master/examples/write-to-json.js)
@@ -83,12 +83,12 @@ All methods are inherited from [stream.Transform](http://nodejs.org/api/stream.h
 
 ### Events
 #### Events: 'node', 'way', 'relation'
-When an object (node/way/relation) from the .osm file has been parsed fully with its attributes and children (if any) ready, it will emit a 'node' event.
+When an object (node/way/relation) from the .osm file has been parsed fully with its attributes and children (if any) ready, it will emit a 'node' or 'way' or 'relation' event, depending on the object type.
 
 You can modify the outgoing data and passing it back to the callback.
 Or you can prevent the data from being passed downstream by passing back a *null* or *false*
 
-Its important to note that since this is a streaming parser, any other objects (ways/relations) that may have referenced a skipped node may still hold its reference. It is up to the implementation to remove its references. 
+It's important to note that since this is a streaming parser, any other objects (ways/relations) that may have referenced a skipped node may still hold its reference. It is up to the implementation to remove its references. 
 
 To see an example of a possible implementation, take a look at ```` /examples/write-to-json.js````
 
