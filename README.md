@@ -9,7 +9,17 @@ Both incoming and outgoing streams available for piping from/to other streams.
 
 ### Table of Content
 * [Quick Start](#quick-start)
+  * [Install](#install)
+  * [Basic example](#example-reading-from-a-local-osm-file)
+  * [More examples](#more-examples)
 * [API](#api)
+  * [Class: OSMStream](#class-osmstream)
+  * [Methods](#methods)
+  * [Events](#events)
+    * [Events: 'node', 'way', 'relation'](#events-node-way-relation)
+    * [Event:'writeable'](#event-writeable)
+    * [Event:'flush'](#event-flush)
+    * [Events inherited from stream.Transform](#events-inherited-from-streamtransform)
 * [Test](#test)
 * [Known Issues](#known-issues)
 * [Credits](#credits)
@@ -44,9 +54,9 @@ parser.on('node', function(node, callback){
 	callback(node);
 });
 
-parser.on('way', function(way, callback){ ... });
+parser.on('way', function(way, callback){ callback(way); });
 
-parser.on('relation', function(way, callback){ ... });
+parser.on('relation', function(way, callback){ callback(relation); });
 ````
 
 Easy-peasy, lemon-squeezy.
@@ -78,9 +88,9 @@ When an object (node/way/relation) from the .osm file has been parsed fully with
 You can modify the outgoing data and passing it back to the callback.
 Or you can prevent the data from being passed downstream by passing back a *null* or *false*
 
-Its important to note that since this is a streaming parser, any other objects (ways/relations) that may have referenced a node may still hold its reference. It is up to the implementation to remove its references.
+Its important to note that since this is a streaming parser, any other objects (ways/relations) that may have referenced a skipped node may still hold its reference. It is up to the implementation to remove its references. 
 
-To see an example, take a look at ```` examples/write-to-json.js````
+To see an example of a possible implementation, take a look at ```` examples/write-to-json.js````
 
 Note: If this event was registered, the callback must be passed back.
 
@@ -88,17 +98,19 @@ Note: If this event was registered, the callback must be passed back.
 parser.on('node', function(node, callback) {
   // modify the node object as necessary and pass back to callback
   // or send a null or false to prevent it from going downstream
+  callback(node);
 });
 
 parser.on('way', function(way, callback) {
   ...
+  callback(way);
 });
 parser.on('relation', function(relation, callback) {
   ...
+  callback(relation);
 });
 ````
-#### Event: 'way'
-#### Event: 'relation'
+
 #### Event: 'writable'
 When a chunk of data is ready to be written to the outgoing stream, it will emit a 'writeable' event.
 
@@ -130,7 +142,6 @@ parser.on('flush', function(callback) {
   callback(last_data);
 });
 ````
-
 
 #### Events inherited from stream.Transform
 In addition to the events above, the following are events inherited from stream.Transform class.
