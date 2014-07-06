@@ -66,7 +66,7 @@ Easy-peasy, lemon-squeezy.
 More advanced examples are available in the ```./examples``` folder
 
 #### Writing to a JSON file using Writeable steam (fs.createWriteStream)
-Source: [/examples/write-to-json.js](https://github.com/sogko/node-osm-stream/raw/master/examples/write-to-json.js)
+Source: [/examples/write-to-json.js](https://github.com/sogko/node-osm-stream/blob/master/examples/write-to-json.js)
 
 To run example:
 ````
