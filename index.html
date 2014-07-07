@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Node-osm-stream by sogko</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Node-osm-stream</h1>
+        <p> NodeJS-based streamable parser for OpenStreetMap (.osm) files powered by node-expat - @sogko</p>
+
+        <p class="view"><a href="https://github.com/sogko/node-osm-stream">View the Project on GitHub <small>sogko/node-osm-stream</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/sogko/node-osm-stream/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/sogko/node-osm-stream/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/sogko/node-osm-stream">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="node-osm-stream" class="anchor" href="#node-osm-stream"><span class="octicon octicon-link"></span></a>node-osm-stream</h1>
+
+<h2>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
+
+<p>A NodeJS-based streamable parser for OpenStreetMap (.osm) files.</p>
+
+<p>Both incoming and outgoing streams available for piping from/to other streams.</p>
+
+<p><em>Powered by  <a href="https://github.com/node-xmpp/node-expat">node-expat</a> for blazing fast parsing.</em></p>
+
+<h3>
+<a name="table-of-content" class="anchor" href="#table-of-content"><span class="octicon octicon-link"></span></a>Table of Content</h3>
+
+<ul>
+<li>
+<a href="#quick-start">Quick Start</a>
+
+<ul>
+<li><a href="#install">Install</a></li>
+<li><a href="#example-reading-from-a-local-osm-file">Basic example</a></li>
+<li><a href="#more-examples">More examples</a></li>
+</ul>
+</li>
+<li>
+<a href="#api">API</a>
+
+<ul>
+<li><a href="#class-osmstream">Class: OSMStream</a></li>
+<li><a href="#methods">Methods</a></li>
+<li>
+<a href="#events">Events</a>
+
+<ul>
+<li><a href="#events-node-way-relation">Events: 'node', 'way', 'relation'</a></li>
+<li><a href="#event-writeable">Event:'writeable'</a></li>
+<li><a href="#event-flush">Event:'flush'</a></li>
+<li><a href="#events-inherited-from-streamtransform">Events inherited from stream.Transform</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#test">Test</a></li>
+<li><a href="#known-issues">Known Issues</a></li>
+<li><a href="#credits">Credits</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#license">License</a></li>
+</ul><hr><h2>
+<a name="quick-start" class="anchor" href="#quick-start"><span class="octicon octicon-link"></span></a>Quick Start</h2>
+
+<h3>
+<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h3>
+
+<pre><code>npm install node-osm-stream
+</code></pre>
+
+<p>No fuss, no lints</p>
+
+<h3>
+<a name="example-reading-from-a-local-osm-file" class="anchor" href="#example-reading-from-a-local-osm-file"><span class="octicon octicon-link"></span></a>Example: Reading from a local .osm file</h3>
+
+<pre><code>var fs = require('fs');
+var OSMStream = require('node-osm-stream');
+var parser = OSMStream();
+
+// open a local .osm filestream
+fs.createReadStream('./path/to/file.osm')
+    .pipe(parser);
+
+parser.on('node', function(node, callback){
+    // Modify current node object as you wish
+    // and pass it back to the callback.
+    // Or pass 'null' or 'false' to prevent the object being 
+    // written to outgoing stream
+    console.log(node);
+    callback(node);
+});
+
+parser.on('way', function(way, callback){ callback(way); });
+
+parser.on('relation', function(way, callback){ callback(relation); });
+</code></pre>
+
+<p>Easy-peasy, lemon-squeezy.</p>
+
+<h3>
+<a name="more-examples" class="anchor" href="#more-examples"><span class="octicon octicon-link"></span></a>More examples</h3>
+
+<p>More advanced examples are available in the <code>./examples</code> folder</p>
+
+<h4>
+<a name="writing-to-a-json-file-using-writeable-steam-fscreatewritestream" class="anchor" href="#writing-to-a-json-file-using-writeable-steam-fscreatewritestream"><span class="octicon octicon-link"></span></a>Writing to a JSON file using Writeable steam (fs.createWriteStream)</h4>
+
+<p>Source: <a href="https://github.com/sogko/node-osm-stream/blob/master/examples/write-to-json.js">/examples/write-to-json.js</a></p>
+
+<p>To run example:</p>
+
+<pre><code>node ./examples/write-to-json.js
+</code></pre>
+
+<h2>
+<a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h2>
+
+<h3>
+<a name="class-osmstream" class="anchor" href="#class-osmstream"><span class="octicon octicon-link"></span></a>Class: OSMStream</h3>
+
+<p>Class inherited from <a href="http://nodejs.org/api/stream.html#stream_class_stream_transform">stream.Transform</a></p>
+
+<h3>
+<a name="methods" class="anchor" href="#methods"><span class="octicon octicon-link"></span></a>Methods</h3>
+
+<p>All methods are inherited from <a href="http://nodejs.org/api/stream.html#stream_class_stream_transform">stream.Transform</a></p>
+
+<h3>
+<a name="events" class="anchor" href="#events"><span class="octicon octicon-link"></span></a>Events</h3>
+
+<h4>
+<a name="events-node-way-relation" class="anchor" href="#events-node-way-relation"><span class="octicon octicon-link"></span></a>Events: 'node', 'way', 'relation'</h4>
+
+<p>When an object (node/way/relation) from the .osm file has been parsed fully with its attributes and children (if any) ready, it will emit a 'node' or 'way' or 'relation' event, depending on the object type.</p>
+
+<p>You can modify the outgoing data and passing it back to the callback.
+Or you can prevent the data from being passed downstream by passing back a <em>null</em> or <em>false</em></p>
+
+<p>It's important to note that since this is a streaming parser, any other objects (ways/relations) that may have referenced a skipped node may still hold its reference. It is up to the implementation to remove its references. </p>
+
+<p>To see an example of a possible implementation, take a look at <code>/examples/write-to-json.js</code></p>
+
+<p>Note: If this event was registered, the callback must be passed back.</p>
+
+<pre><code>parser.on('node', function(node, callback) {
+  // modify the node object as necessary and pass back to callback
+  // or send a null or false to prevent it from going downstream
+  callback(node);
+});
+
+parser.on('way', function(way, callback) {
+  ...
+  callback(way);
+});
+parser.on('relation', function(relation, callback) {
+  ...
+  callback(relation);
+});
+</code></pre>
+
+<h4>
+<a name="event-writable" class="anchor" href="#event-writable"><span class="octicon octicon-link"></span></a>Event: 'writable'</h4>
+
+<p>When a chunk of data is ready to be written to the outgoing stream, it will emit a 'writeable' event.</p>
+
+<p>You can modify the outgoing data and passing it back to the callback.
+Or you can prevent the data from being passed downstream by passing back a <em>null</em> or <em>false</em></p>
+
+<p>Note: If this event was registered, the callback must be passed back.</p>
+
+<pre><code>parser.on('writeable', function(data, callback) {
+  // there is some data to be passed to outgoing stream
+  // modify 'data' as needed
+  callback(data);
+});
+</code></pre>
+
+<h4>
+<a name="event-flush" class="anchor" href="#event-flush"><span class="octicon octicon-link"></span></a>Event: 'flush'</h4>
+
+<p>After all the written data has been consumed through the outgoing stream, it will emit a 'flush' event.
+This will happened before the 'end' event is sent to signal the end of the readable side.</p>
+
+<p>You can choose to pass in as much data as needed by passing it through the callback.
+Any data passed back will be written to the outgoing stream before the 'end' event is emitted.</p>
+
+<p>Note: If this event was registered, the callback must be passed back.</p>
+
+<pre><code>parser.on('flush', function(callback) {
+  var last_data = 'This is the last string sent to the outgoing stream';
+  callback(last_data);
+});
+</code></pre>
+
+<h4>
+<a name="events-inherited-from-streamtransform" class="anchor" href="#events-inherited-from-streamtransform"><span class="octicon octicon-link"></span></a>Events inherited from stream.Transform</h4>
+
+<p>In addition to the events above, the following are events inherited from stream.Transform class.
+Please refer to the offical documentation for more info: <a href="http://nodejs.org/api/stream.html#stream_class_stream_transform">NodeJS API Documentation: stream.Transform</a></p>
+
+<ul>
+<li>Event: 'readable'</li>
+<li>Event: 'data'</li>
+<li>Event: 'end'</li>
+<li>Event: 'close'</li>
+<li>Event: 'error'</li>
+<li>Event: 'drain'</li>
+<li>Event: 'finish'</li>
+<li>Event: 'pipe'</li>
+<li>Event: 'unpipe'</li>
+</ul><h2>
+<a name="test" class="anchor" href="#test"><span class="octicon octicon-link"></span></a>Test</h2>
+
+<pre><code>npm test
+</code></pre>
+
+<h2>
+<a name="known-issues" class="anchor" href="#known-issues"><span class="octicon octicon-link"></span></a>Known Issues</h2>
+
+<h2>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<ul>
+<li>
+<a href="https://github.com/sogko">Hafiz Ismail</a> </li>
+<li><a href="https://github.com/node-xmpp/node-expat">node-expat</a></li>
+</ul><h2>
+<a name="links" class="anchor" href="#links"><span class="octicon octicon-link"></span></a>Links</h2>
+
+<ul>
+<li><a href="https://twitter.com/sogko">twitter.com/sogko</a></li>
+<li><a href="https://github.com/sogko">github.com/sogko</a></li>
+<li><a href="https://medium.com/@sogko">medium.com/@sogko</a></li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2014 Hafiz Ismail. This software is licensed under the <a href="https://github.com/sogko/node-osm-stream/raw/master/LICENSE">MIT License</a>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/sogko">sogko</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
