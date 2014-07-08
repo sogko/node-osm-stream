@@ -65,6 +65,14 @@ Easy-peasy, lemon-squeezy.
 ### More examples
 More advanced examples are available in the ```./examples``` folder
 
+#### Stream and format outgoing data to console (process.stdout)
+Source: [/examples/write-to-json.js](https://github.com/sogko/node-osm-stream/blob/master/examples/stream-to-stdout.js)
+
+To run example:
+````
+node ./examples/stream-to-stdout.js
+````
+
 #### Writing to a JSON file using Writeable steam (fs.createWriteStream)
 Source: [/examples/write-to-json.js](https://github.com/sogko/node-osm-stream/blob/master/examples/write-to-json.js)
 
