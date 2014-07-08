@@ -1,9 +1,11 @@
 # node-osm-stream
 
 ## Overview
-A fast and flexible NodeJS-based streamable parser for OpenStreetMap (.osm) files.
+A fast and flexible NodeJS-based streaming parser for OpenStreetMap (.osm) files.
 
-Both incoming and outgoing streams available for piping from/to other streams.
+* Both incoming and outgoing streams available for piping from/to other streams
+* Able to deal with large .osm files easily without loading the whole file onto memory
+* Provided with the flexibility to work with and modify OSM objects (nodes, ways, relations) easily as it streams to you
 
 *Powered by  [node-expat](https://github.com/node-xmpp/node-expat) for blazing fast parsing.*
 
