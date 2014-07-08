@@ -19,8 +19,8 @@ A fast and flexible NodeJS-based streaming parser for OpenStreetMap (.osm) files
   * [Methods](#methods)
   * [Events](#events)
     * [Events: 'node', 'way', 'relation'](#events-node-way-relation)
-    * [Event:'writeable'](#event-writeable)
-    * [Event:'flush'](#event-flush)
+    * [Event: 'writeable'](#event-writeable)
+    * [Event: 'flush'](#event-flush)
     * [Events inherited from stream.Transform](#events-inherited-from-streamtransform)
 * [Test](#test)
 * [Known Issues](#known-issues)
@@ -121,7 +121,7 @@ parser.on('relation', function(relation, callback) {
 });
 ````
 
-#### Event: 'writable'
+#### Event: 'writeable'
 When a chunk of data is ready to be written to the outgoing stream, it will emit a 'writeable' event.
 
 You can modify the outgoing data and passing it back to the callback.
