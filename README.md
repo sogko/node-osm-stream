@@ -66,7 +66,7 @@ Easy-peasy, lemon-squeezy.
 More advanced examples are available in the ```./examples``` folder
 
 #### Stream and format outgoing data to console (process.stdout)
-Source: [/examples/write-to-json.js](https://github.com/sogko/node-osm-stream/blob/master/examples/stream-to-stdout.js)
+Source: [/examples/stream-to-stdout.js](https://github.com/sogko/node-osm-stream/blob/master/examples/stream-to-stdout.js)
 
 To run example:
 ````
