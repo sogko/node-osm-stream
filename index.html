@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Node-osm-stream by sogko</title>
+    <title>node-osm-stream by sogko</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -15,8 +15,8 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Node-osm-stream</h1>
-        <p> NodeJS-based streamable parser for OpenStreetMap (.osm) files powered by node-expat - @sogko</p>
+        <h1>node-osm-stream</h1>
+        <p> Fast and flexible NodeJS-based streamable parser for OpenStreetMap (.osm) files powered by node-expat - @sogko</p>
 
         <p class="view"><a href="https://github.com/sogko/node-osm-stream">View the Project on GitHub <small>sogko/node-osm-stream</small></a></p>
 
@@ -34,7 +34,7 @@
 <h2>
 <a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
 
-<p>A NodeJS-based streamable parser for OpenStreetMap (.osm) files.</p>
+<p>A fast and flexible NodeJS-based streamable parser for OpenStreetMap (.osm) files.</p>
 
 <p>Both incoming and outgoing streams available for piping from/to other streams.</p>
 
@@ -118,6 +118,16 @@ parser.on('relation', function(way, callback){ callback(relation); });
 <a name="more-examples" class="anchor" href="#more-examples"><span class="octicon octicon-link"></span></a>More examples</h3>
 
 <p>More advanced examples are available in the <code>./examples</code> folder</p>
+
+<h4>
+<a name="stream-and-format-outgoing-data-to-console-processstdout" class="anchor" href="#stream-and-format-outgoing-data-to-console-processstdout"><span class="octicon octicon-link"></span></a>Stream and format outgoing data to console (process.stdout)</h4>
+
+<p>Source: <a href="https://github.com/sogko/node-osm-stream/blob/master/examples/stream-to-stdout.js">/examples/stream-to-stdout.js</a></p>
+
+<p>To run example:</p>
+
+<pre><code>node ./examples/stream-to-stdout.js
+</code></pre>
 
 <h4>
 <a name="writing-to-a-json-file-using-writeable-steam-fscreatewritestream" class="anchor" href="#writing-to-a-json-file-using-writeable-steam-fscreatewritestream"><span class="octicon octicon-link"></span></a>Writing to a JSON file using Writeable steam (fs.createWriteStream)</h4>
@@ -259,6 +269,16 @@ Please refer to the offical documentation for more info: <a href="http://nodejs.
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-52623686-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
