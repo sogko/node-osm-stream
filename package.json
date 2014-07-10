@@ -2,6 +2,7 @@
   "name": "node-osm-stream",
   "version": "0.2.2",
   "description": "A fast and flexible NodeJS-based streaming parser for OpenStreetMap (.osm) files.",
+  "homepage": "https://sogko.github.io/node-osm-stream",
   "main": "index.js",
   "scripts": {
     "test": "npm test"
